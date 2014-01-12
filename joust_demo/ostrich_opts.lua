@@ -3,39 +3,39 @@ local animation_data = {
         frames = {
             {
                 x = 23,
-                y = 10,
+                y = 12,
                 width = 22,
-                height = 24
+                height = 21
             }, {
                 x = 46,
-                y = 10,
+                y = 12,
                 width = 22,
-                height = 24
+                height = 21
             }, { 
                 x = 69,
-                y = 10,
+                y = 12,
                 width = 22,
-                height = 24
+                height = 21
             }, { 
                 x = 91,
-                y = 10,
+                y = 12,
                 width = 22,
-                height = 24
+                height = 21
             }, { 
                 x = 112,
-                y = 10,
+                y = 12,
                 width = 22,
-                height = 24
+                height = 21
             }, { 
                 x = 137,
-                y = 10,
+                y = 8,
                 width = 22,
-                height = 24
+                height = 21
             }, { 
-                x = 160,
-                y = 10,
+                x = 162,
+                y = 8,
                 width = 22,
-                height = 24
+                height = 21
             }, 
     
         },
