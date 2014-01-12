@@ -85,7 +85,7 @@ local animation_data = {
                 x = 37,
                 y = 193,
                 width = 180,
-                height = 2
+                height = 8
             }, {}
         },
         sheetContentWidth=320, 

@@ -75,11 +75,12 @@ local setupPlatforms = function(mySheet, opts)
     
 end
 local animate = function( direction )
+    animation:setSequence("walk")
     if direction == "left" then
-        animation:applyLinearImpulse(-1, 0, animation.x, animation.y)
+        animation:applyLinearImpulse(-0.5, 0, animation.x, animation.y)
         animation.xScale = -1 
     else
-        animation:applyLinearImpulse(1, 0, animation.x, animation.y)
+        animation:applyLinearImpulse(.5, 0, animation.x, animation.y)
         animation.xScale = 1
     end
     
@@ -138,6 +139,7 @@ function scene:createScene( event )
     animation.y = halfH
     physics.addBody( animation, { density=0.5, bounce=.1 } )
     animation.isFixedRotation = true
+    animation.isBullet = true
     
     setupPlatforms(mySheet, ground_opts)
  
