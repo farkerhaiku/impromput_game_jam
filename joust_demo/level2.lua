@@ -3,70 +3,104 @@ local scene = storyboard.newScene()
 local physics = require "physics"
 physics.start(); 
 physics.pause();
+display.setDefault( "anchorX", 0 )
+display.setDefault( "anchorY", 0 )
 
 local screenW, screenH, halfW, halfH = display.contentWidth, display.contentHeight, display.contentWidth*0.5, display.contentHeight*0.5
 local leftLedge, rightLedge, middleLedge, bottomMiddleLedge, bottomLeftLedge, bottomRightLedgeWithSpawn, bottomRightLedgeNoSpawn
 local basePlatformRight, basePlatformLeft, basePlatformMid
+
 local scaleAndPhysics = function(platform)
     physics.addBody( platform, "static", { density=1.0 } )
+    platform.anchorX = 0.5
+    platform.anchorY = 0.5
     platform.xScale = 2
     platform.yScale = 2
 end
+
 local setupPlatforms = function(mySheet, opts)
     leftLedge = display.newImage(mySheet, opts.leftLedge)
+    scaleAndPhysics(leftLedge)
     leftLedge.x = leftLedge.width
     leftLedge.y = 100
-    scaleAndPhysics(leftLedge)
     
     rightLedge = display.newImage(mySheet, opts.rightLedge)
+    scaleAndPhysics(rightLedge)
     rightLedge.x = screenW - rightLedge.width
     rightLedge.y = 100
-    scaleAndPhysics(rightLedge)
     
     middleLedge = display.newImage(mySheet, opts.middleLedge)
+    scaleAndPhysics(middleLedge)
     middleLedge.x = halfW
     middleLedge.y = 120
-    scaleAndPhysics(middleLedge)
     
     bottomMiddleLedge = display.newImage(mySheet, opts.bottomMiddleLedge)
+    scaleAndPhysics(bottomMiddleLedge)
     bottomMiddleLedge.x = halfW
     bottomMiddleLedge.y = 220
-    scaleAndPhysics(bottomMiddleLedge)
     
     bottomLeftLedge = display.newImage(mySheet, opts.bottomLeftLedge)
+    scaleAndPhysics(bottomLeftLedge)
     bottomLeftLedge.x = bottomLeftLedge.width
     bottomLeftLedge.y = 196
-    scaleAndPhysics(bottomLeftLedge)
     
     bottomRightLedgeNoSpawn = display.newImage(mySheet, opts.bottomRightLedgeNoSpawn)
+    scaleAndPhysics(bottomRightLedgeNoSpawn)
     bottomRightLedgeNoSpawn.x = screenW - bottomRightLedgeNoSpawn.width
     bottomRightLedgeNoSpawn.y = 196
-    scaleAndPhysics(bottomRightLedgeNoSpawn)
     
     bottomRightLedgeWithSpawn = display.newImage(mySheet, opts.bottomRightLedgeWithSpawn)
+    scaleAndPhysics(bottomRightLedgeWithSpawn)
     bottomRightLedgeWithSpawn.x = screenW - bottomRightLedgeWithSpawn.width *1.5
     bottomRightLedgeWithSpawn.y = 180
-    scaleAndPhysics(bottomRightLedgeWithSpawn)
 
     basePlatformMid = display.newImage(mySheet, opts.basePlatformMid)
     scaleAndPhysics(basePlatformMid)
     
     basePlatformRight = display.newImage(mySheet, opts.basePlatformRight)
+    scaleAndPhysics(basePlatformRight)
     basePlatformRight.y = screenH - basePlatformRight.height
     basePlatformRight.x = 135
-    scaleAndPhysics(basePlatformRight)
     
     basePlatformLeft = display.newImage(mySheet, opts.basePlatformLeft)
+    scaleAndPhysics(basePlatformLeft)
     basePlatformLeft.y = screenH - basePlatformLeft.height
     basePlatformLeft.x = 465
-    scaleAndPhysics(basePlatformLeft)
     
     basePlatformMid.y = screenH - basePlatformLeft.height * 2 + basePlatformMid.height
     basePlatformMid.x = 300
     
 end
+local onKeyEvent = function( event )
+    local message = "Key '" .. event.keyName .. "' was pressed " .. event.phase
+    print( message )
 
+    if (event.keyName == "down") then
+    
+    end
+    
+    if (event.keyName == "left") then
+    
+    end
+    
+    if (event.keyName == "right") then
+    end
+    
+    if (event.keyName == "up") then
+    end
+    
+    -- If the "back" key was pressed on Android, then prevent it from backing out of your app.
+    if (event.keyName == "back") and (system.getInfo("platformName") == "Android") then
+        return true
+    end
+
+
+    -- Return false to indicate that this app is *not* overriding the received key.
+    -- This lets the operating system execute its default handling of this key.
+    return false
+end
 function scene:createScene( event )
+    Runtime:addEventListener( "key", onKeyEvent )
 	local group = self.view
 
 	local background = display.newRect( 0, 0, screenW, screenH )
@@ -80,7 +114,6 @@ function scene:createScene( event )
     animation.x = halfW
     animation.y = halfH
     physics.addBody( animation, { bounce=.1 } )
-    animation:setSequence("walk")
     
     setupPlatforms(mySheet, ground_opts)
  
