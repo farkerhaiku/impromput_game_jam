@@ -72,31 +72,29 @@ local setupPlatforms = function(mySheet, opts)
     
 end
 local onKeyEvent = function( event )
-    local message = "Key '" .. event.keyName .. "' was pressed " .. event.phase
-    print( message )
+    if (event.phase == "down") then
+        if (event.keyName == "down" or event.nativeKeyCode == 125) then
+            print("firing down")
+        end
+        
+        if (event.keyName == "left" or event.nativeKeyCode == 123) then
+            print("firing left")
+        end
+        
+        if (event.keyName == "right" or event.nativeKeyCode == 124) then
+            print("firing right")
+        end
+        
+        if (event.keyName == "up" or event.nativeKeyCode == 126) then
+            print("firing up")
+        end
+    end
 
-    if (event.keyName == "down") then
-    
-    end
-    
-    if (event.keyName == "left") then
-    
-    end
-    
-    if (event.keyName == "right") then
-    end
-    
-    if (event.keyName == "up") then
-    end
-    
     -- If the "back" key was pressed on Android, then prevent it from backing out of your app.
     if (event.keyName == "back") and (system.getInfo("platformName") == "Android") then
         return true
     end
-
-
-    -- Return false to indicate that this app is *not* overriding the received key.
-    -- This lets the operating system execute its default handling of this key.
+    
     return false
 end
 function scene:createScene( event )
@@ -117,9 +115,6 @@ function scene:createScene( event )
     
     setupPlatforms(mySheet, ground_opts)
  
-    animation:play()
- 
-	
 	group:insert( background )
 end
 
