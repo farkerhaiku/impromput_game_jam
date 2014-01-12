@@ -2,98 +2,99 @@ local animation_data = {
     options = { 
         frames = {
             {
-                x = 25,
-                y = 12,
-                width = 20,
-                height = 20
+                x = 346,
+                y = 62,
+                width = 40,
+                height = 38
             }, {
-                x = 48,
-                y = 12,
-                width = 20,
-                height = 20
+                x = 386,
+                y = 62,
+                width = 40,
+                height = 38
             }, { 
-                x = 71,
-                y = 12,
-                width = 20,
-                height = 20
+                x = 426,
+                y = 62,
+                width = 40,
+                height = 38
             }, { 
-                x = 95,
-                y = 12,
-                width = 20,
-                height = 20
+                x = 466,
+                y = 62,
+                width = 40,
+                height = 38
             }, { 
-                x = 112,
-                y = 12,
-                width = 20,
-                height = 20
+                x = 506,
+                y = 62,
+                width = 40,
+                height = 38
             }, { 
-                x = 140,
-                y = 11,
-                width = 18,
-                height = 15
+                x = 1,
+                y = 103,
+                width = 40,
+                height = 38
             }, { 
-                x = 164,
-                y = 11,
-                width = 18,
-                height = 15
+                x = 41,
+                y = 103,
+                width = 40,
+                height = 38
             }, { -- left ledge no spawn
-                x = 35,
-                y = 162,
-                width = 33  ,
-                height = 7
-            }, { -- right ledge no spawn
-                x = 78,
-                y = 162,
-                width =46,
-                height = 8
-            }, { -- middle ledge
-                x = 131,
-                y = 162,
-                width =88,
-                height = 9
-            }, { -- bottom middle ledge
-                x = 226,
-                y = 162,
-                width = 64,
-                height = 8
-            }, { -- bottom left ledge with spawn point
-                x = 34,
-                y = 182,
+                x = 0,
+                y = 1,
                 width = 63,
-                height = 7
+                height = 14
+            }, { -- right ledge no spawn
+                x = 72,
+                y = 1,
+                width = 88,
+                height = 14
+            }, { -- middle ledge
+                x = 170,
+                y = 1,
+                width = 164,
+                height = 14
+            }, { -- bottom middle ledge
+                x = 214,
+                y = 27,
+                width = 118,
+                height = 14
+            }, { -- bottom left ledge with spawn point
+                x = 344,
+                y = 1,
+                width = 116,
+                height = 14
             }, { -- bottom right ledge with spawn
-                x = 109,
-                y = 180,
-                width = 57,
-                height = 9
+                x = 0,
+                y = 27,
+                width = 110,
+                height = 15
             }, { -- bottom right ledge without spawn
-                x = 175,
-                y = 180,
-                width = 30,
-                height = 8
+                x = 120,
+                y = 27,
+                width = 70,
+                height = 15
             }, { -- base platform right 
-                x = 228,
-                y = 177,
-                width = 16,
-                height = 15
+                x = 378,
+                y = 27,
+                width = 32,
+                height = 20
             }, { -- base platform left
-                x = 257,
-                y = 180,
-                width = 17,
-                height = 15
+                x = 342,
+                y = 27,
+                width = 32,
+                height = 20
             }, { -- base platform mid
-                x = 37,
-                y = 193,
-                width = 180,
-                height = 8
+                x = 1,
+                y = 62,
+                width = 346,
+                height = 5
             }, {}
         },
-        sheetContentWidth=320, 
-        sheetContentHeight=200
+        sheetContentWidth=560, 
+        sheetContentHeight=472
     },
     sequenceData = {
-        { name = "walk", start=1, count=3, time=600 },
-        { name = "fly", start=6, count=2, time=800 },
+        { name = "stand", start=4, count=1 },
+        { name = "walk", start=1, count=4, time=600 },
+        { name = "fly", start=6, count=2, time=400 },
         { name = "run", start=1, count=4, time=275 },
         { name = "stop", start=5, count=1, time=275 },
     }
