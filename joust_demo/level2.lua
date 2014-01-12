@@ -3,12 +3,15 @@ local scene = storyboard.newScene()
 local physics = require "physics"
 physics.start(); 
 physics.pause();
+physics.setGravity(0, 9.8);
 display.setDefault( "anchorX", 0 )
 display.setDefault( "anchorY", 0 )
 
 local screenW, screenH, halfW, halfH = display.contentWidth, display.contentHeight, display.contentWidth*0.5, display.contentHeight*0.5
 local leftLedge, rightLedge, middleLedge, bottomMiddleLedge, bottomLeftLedge, bottomRightLedgeWithSpawn, bottomRightLedgeNoSpawn
 local basePlatformRight, basePlatformLeft, basePlatformMid
+local velocity, flying = 0, false
+local animation 
 
 local scaleAndPhysics = function(platform)
     physics.addBody( platform, "static", { density=1.0 } )
@@ -71,6 +74,17 @@ local setupPlatforms = function(mySheet, opts)
     basePlatformMid.x = 300
     
 end
+local animate = function( direction )
+    if direction == "left" then
+        animation:applyLinearImpulse(-1, 0, animation.x, animation.y)
+        animation.xScale = -1 
+    else
+        animation:applyLinearImpulse(1, 0, animation.x, animation.y)
+        animation.xScale = 1
+    end
+    
+    animation:play()
+end
 local onKeyEvent = function( event )
     if (event.phase == "down") then
         if (event.keyName == "down" or event.nativeKeyCode == 125) then
@@ -78,15 +92,24 @@ local onKeyEvent = function( event )
         end
         
         if (event.keyName == "left" or event.nativeKeyCode == 123) then
+            velocity = velocity - 1
+            animate("left")
             print("firing left")
         end
         
         if (event.keyName == "right" or event.nativeKeyCode == 124) then
+            velocity = velocity + 1
+            animate("right")
             print("firing right")
         end
         
         if (event.keyName == "up" or event.nativeKeyCode == 126) then
-            print("firing up")
+            animation:applyLinearImpulse(0, -0.4, animation.x, animation.y)
+            flying = true
+        end
+    else 
+        if (event.keyName == "up" or event.nativeKeyCode == 126) then
+            flying = false
         end
     end
 
@@ -108,10 +131,13 @@ function scene:createScene( event )
     local ground_opts = require "ground_opts"
     local mySheet = graphics.newImageSheet( "joust.gif", ostrich_opts.options )
  
-    local animation = display.newSprite( mySheet, ostrich_opts.sequenceData )
+    animation = display.newSprite( mySheet, ostrich_opts.sequenceData )
+    animation.anchorX = 0.5
+    animation.anchorY = 0.5
     animation.x = halfW
     animation.y = halfH
-    physics.addBody( animation, { bounce=.1 } )
+    physics.addBody( animation, { density=0.5, bounce=.1 } )
+    animation.isFixedRotation = true
     
     setupPlatforms(mySheet, ground_opts)
  
