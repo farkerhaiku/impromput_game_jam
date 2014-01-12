@@ -38,12 +38,14 @@ function scene:createScene( event )
 
 	-- display a background image
 	local background = display.newImageRect( "background.jpg", display.contentWidth, display.contentHeight )
-	background:setReferencePoint( display.TopLeftReferencePoint )
+	background.anchorX = 0
+    background.anchorY = 0
 	background.x, background.y = 0, 0
 	
 	-- create/position logo/title image on upper-half of the screen
 	local titleLogo = display.newImageRect( "logo.png", 264, 42 )
-	titleLogo:setReferencePoint( display.CenterReferencePoint )
+	titleLogo.anchorX = 0.5
+    titleLogo.anchorY = 0.5
 	titleLogo.x = display.contentWidth * 0.5
 	titleLogo.y = 100
 	
@@ -56,7 +58,8 @@ function scene:createScene( event )
 		width=154, height=40,
 		onRelease = onPlayBtnRelease	-- event listener function
 	}
-	playBtn:setReferencePoint( display.CenterReferencePoint )
+	playBtn.anchorX = 0.5
+    playBtn.anchorY = 0.5
 	playBtn.x = display.contentWidth*0.5
 	playBtn.y = display.contentHeight - 125
 	
