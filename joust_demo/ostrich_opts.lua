@@ -61,16 +61,31 @@ local animation_data = {
                 y = 182,
                 width = 63,
                 height = 7
-            }, { -- bottom right left with spawn
+            }, { -- bottom right ledge with spawn
                 x = 109,
                 y = 180,
                 width = 57,
-                height = 10
-            }, { -- bottom right left without spawn
+                height = 9
+            }, { -- bottom right ledge without spawn
                 x = 175,
                 y = 180,
-                width = 42,
+                width = 30,
                 height = 8
+            }, { -- base platform right 
+                x = 228,
+                y = 177,
+                width = 16,
+                height = 15
+            }, { -- base platform left
+                x = 257,
+                y = 180,
+                width = 17,
+                height = 15
+            }, { -- base platform mid
+                x = 37,
+                y = 193,
+                width = 180,
+                height = 2
             }, {}
         },
         sheetContentWidth=320, 

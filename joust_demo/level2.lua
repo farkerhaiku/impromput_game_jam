@@ -5,6 +5,66 @@ physics.start();
 physics.pause();
 
 local screenW, screenH, halfW, halfH = display.contentWidth, display.contentHeight, display.contentWidth*0.5, display.contentHeight*0.5
+local leftLedge, rightLedge, middleLedge, bottomMiddleLedge, bottomLeftLedge, bottomRightLedgeWithSpawn, bottomRightLedgeNoSpawn
+local basePlatformRight, basePlatformLeft, basePlatformMid
+local scaleAndPhysics = function(platform)
+    physics.addBody( platform, "static", { density=1.0 } )
+    platform.xScale = 2
+    platform.yScale = 2
+end
+local setupPlatforms = function(mySheet, opts)
+    leftLedge = display.newImage(mySheet, opts.leftLedge)
+    leftLedge.x = leftLedge.width
+    leftLedge.y = 100
+    scaleAndPhysics(leftLedge)
+    
+    rightLedge = display.newImage(mySheet, opts.rightLedge)
+    rightLedge.x = screenW - rightLedge.width
+    rightLedge.y = 100
+    scaleAndPhysics(rightLedge)
+    
+    middleLedge = display.newImage(mySheet, opts.middleLedge)
+    middleLedge.x = halfW
+    middleLedge.y = 120
+    scaleAndPhysics(middleLedge)
+    
+    bottomMiddleLedge = display.newImage(mySheet, opts.bottomMiddleLedge)
+    bottomMiddleLedge.x = halfW
+    bottomMiddleLedge.y = 220
+    scaleAndPhysics(bottomMiddleLedge)
+    
+    bottomLeftLedge = display.newImage(mySheet, opts.bottomLeftLedge)
+    bottomLeftLedge.x = bottomLeftLedge.width
+    bottomLeftLedge.y = 196
+    scaleAndPhysics(bottomLeftLedge)
+    
+    bottomRightLedgeNoSpawn = display.newImage(mySheet, opts.bottomRightLedgeNoSpawn)
+    bottomRightLedgeNoSpawn.x = screenW - bottomRightLedgeNoSpawn.width
+    bottomRightLedgeNoSpawn.y = 196
+    scaleAndPhysics(bottomRightLedgeNoSpawn)
+    
+    bottomRightLedgeWithSpawn = display.newImage(mySheet, opts.bottomRightLedgeWithSpawn)
+    bottomRightLedgeWithSpawn.x = screenW - bottomRightLedgeWithSpawn.width *1.5
+    bottomRightLedgeWithSpawn.y = 180
+    scaleAndPhysics(bottomRightLedgeWithSpawn)
+
+    basePlatformMid = display.newImage(mySheet, opts.basePlatformMid)
+    scaleAndPhysics(basePlatformMid)
+    
+    basePlatformRight = display.newImage(mySheet, opts.basePlatformRight)
+    basePlatformRight.y = screenH - basePlatformRight.height
+    basePlatformRight.x = 135
+    scaleAndPhysics(basePlatformRight)
+    
+    basePlatformLeft = display.newImage(mySheet, opts.basePlatformLeft)
+    basePlatformLeft.y = screenH - basePlatformLeft.height
+    basePlatformLeft.x = 465
+    scaleAndPhysics(basePlatformLeft)
+    
+    basePlatformMid.y = screenH - basePlatformLeft.height * 2 + basePlatformMid.height
+    basePlatformMid.x = 300
+    
+end
 
 function scene:createScene( event )
 	local group = self.view
@@ -17,53 +77,12 @@ function scene:createScene( event )
     local mySheet = graphics.newImageSheet( "joust.gif", ostrich_opts.options )
  
     local animation = display.newSprite( mySheet, ostrich_opts.sequenceData )
-    animation.xScale = 2
-    animation.yScale = 2 
     animation.x = halfW
     animation.y = halfH
+    physics.addBody( animation, { bounce=.1 } )
     animation:setSequence("walk")
     
-    local leftLedge = display.newImage(mySheet, ground_opts.leftLedge)
-    leftLedge.x = leftLedge.width
-    leftLedge.xScale = 2
-    leftLedge.yScale = 2 
-    leftLedge.y = 100
-    
-    local rightLedge = display.newImage(mySheet, ground_opts.rightLedge)
-    rightLedge.x = screenW - rightLedge.width
-    rightLedge.xScale = 2
-    rightLedge.yScale = 2 
-    rightLedge.y = 100
-    
-    local middleLedge = display.newImage(mySheet, ground_opts.middleLedge)
-    middleLedge.x = halfW
-    middleLedge.xScale = 2
-    middleLedge.yScale = 2 
-    middleLedge.y = 120
-    
-    local bottomMiddleLedge = display.newImage(mySheet, ground_opts.bottomMiddleLedge)
-    bottomMiddleLedge.xScale = 2
-    bottomMiddleLedge.yScale = 2 
-    bottomMiddleLedge.x = halfW
-    bottomMiddleLedge.y = 220
-    
-    local bottomLeftLedge = display.newImage(mySheet, ground_opts.bottomLeftLedge)
-    bottomLeftLedge.x = bottomLeftLedge.width
-    bottomLeftLedge.xScale = 2
-    bottomLeftLedge.yScale = 2 
-    bottomLeftLedge.y = 195
-    
-    local bottomRightLedgeWithSpawn = display.newImage(mySheet, ground_opts.bottomRightLedgeWithSpawn)
-    bottomRightLedgeWithSpawn.x = screenW - bottomRightLedgeWithSpawn.width *1.5
-    bottomRightLedgeWithSpawn.xScale = 2
-    bottomRightLedgeWithSpawn.yScale = 2 
-    bottomRightLedgeWithSpawn.y = 180
-    
-    local bottomRightLedgeNoSpawn = display.newImage(mySheet, ground_opts.bottomRightLedgeNoSpawn)
-    bottomRightLedgeNoSpawn.xScale = 2
-    bottomRightLedgeNoSpawn.yScale = 2 
-    bottomRightLedgeNoSpawn.x = screenW - bottomRightLedgeNoSpawn.width
-    bottomRightLedgeNoSpawn.y = 195
+    setupPlatforms(mySheet, ground_opts)
  
     animation:play()
  

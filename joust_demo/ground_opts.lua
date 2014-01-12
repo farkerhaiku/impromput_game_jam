@@ -6,6 +6,9 @@ local animation_data = {
     bottomLeftLedge = 12,
     bottomRightLedgeWithSpawn = 13,
     bottomRightLedgeNoSpawn = 14,
+    basePlatformRight = 15,
+    basePlatformLeft = 16,
+    basePlatformMid = 17,
     
 }
 
