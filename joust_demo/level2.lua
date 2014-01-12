@@ -16,7 +16,8 @@ function scene:createScene( event )
     local mySheet = graphics.newImageSheet( "joust.gif", ostrich_opts.options )
  
     local animation = display.newSprite( mySheet, ostrich_opts.sequenceData )
-    animation.xScale = -1 
+    animation.xScale = 3
+    animation.yScale = 3 
     animation.x = display.contentWidth/2  --center the sprite horizontally
     animation.y = display.contentHeight/2  --center the sprite vertically
     animation:setSequence("fly")

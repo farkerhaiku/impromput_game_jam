@@ -2,40 +2,40 @@ local animation_data = {
     options = { 
         frames = {
             {
-                x = 25,
+                x = 23,
                 y = 12,
-                width = 20,
-                height = 20
+                width = 22,
+                height = 21
             }, {
-                x = 48,
+                x = 46,
                 y = 12,
-                width = 20,
-                height = 20
+                width = 22,
+                height = 21
             }, { 
-                x = 71,
+                x = 69,
                 y = 12,
-                width = 20,
-                height = 20
+                width = 22,
+                height = 21
             }, { 
-                x = 95,
+                x = 91,
                 y = 12,
-                width = 20,
-                height = 20
+                width = 22,
+                height = 21
             }, { 
                 x = 112,
                 y = 12,
-                width = 20,
-                height = 20
+                width = 22,
+                height = 21
             }, { 
-                x = 140,
-                y = 11,
-                width = 18,
-                height = 15
+                x = 137,
+                y = 8,
+                width = 22,
+                height = 21
             }, { 
-                x = 164,
-                y = 11,
-                width = 18,
-                height = 15
+                x = 162,
+                y = 8,
+                width = 22,
+                height = 21
             }, 
     
         },
@@ -43,7 +43,7 @@ local animation_data = {
         sheetContentHeight=200
     },
     sequenceData = {
-        { name = "walk", start=1, count=3, time=600 },
+        { name = "walk", start=1, count=4, time=600 },
         { name = "fly", start=6, count=2, time=800 },
         { name = "run", start=1, count=4, time=275 },
         { name = "stop", start=5, count=1, time=275 },
