@@ -10,20 +10,15 @@ function scene:createScene( event )
 	local group = self.view
 
 	local background = display.newRect( 0, 0, screenW, screenH )
-	background:setFillColor( 128 )
+	background:setFillColor( 0 )
 	local sheetData = { width=23, height=30, numFrames=8, sheetContentWidth=320, sheetContentHeight=200 }
     local ostrich_opts = require "ostrich_opts"
-    local mySheet = graphics.newImageSheet( "joust.gif", sheetData )
-    local sequenceData = {
-        { name = "walk", start=2, count=4, time=500 },
-        { name = "fly", start=7, count=2, time=800 },
-        { name = "run", frames={ 2,3,4,5 }, time=250 }
-    }
+    local mySheet = graphics.newImageSheet( "joust.gif", ostrich_opts.options )
  
-    local animation = display.newSprite( mySheet, sequenceData )
+    local animation = display.newSprite( mySheet, ostrich_opts.sequenceData )
     animation.x = display.contentWidth/2  --center the sprite horizontally
     animation.y = display.contentHeight/2  --center the sprite vertically
-    animation:setSequence("walk")
+    animation:setSequence("stop")
  
     animation:play()
  
