@@ -23,7 +23,7 @@ local screenW, screenH, halfW, halfH = display.contentWidth, display.contentHeig
 local leftLedge, rightLedge, middleLedge, bottomMiddleLedge, bottomLeftLedge, bottomRightLedgeWithSpawn, bottomRightLedgeNoSpawn
 local basePlatformRight, basePlatformLeft, basePlatformMid
 local leftWall, rightWall, floor, ceiling
-local velocity, flying = 0, false
+local velocity, flying = 0, 0
 local animation
 local badGuyList = {}
 
@@ -34,14 +34,12 @@ local correctAnimationState = function()
             if (animation.sequence ~= "run") then
                 animation:setSequence("run")
             end
-        elseif math.abs(vx) > 0.3 then
+        elseif math.abs(vx) > 0.1 then
             if (animation.sequence ~= "walk") then
                 animation:setSequence("walk")
             end
         else
-            if flying ~= 0 then
-                animation:setSequence("stand")
-            end
+            animation:setSequence("stand")
             return
         end
     end
@@ -77,8 +75,6 @@ local createBadGuy = function(mySheet)
     
     badGuy.x = halfW
     badGuy.y = halfH
-    badGuy:setSequence("walk")
-    badGuy:play()
 end
 
 local floorCollision = function(self, event)
