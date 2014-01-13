@@ -86,6 +86,41 @@ local animation_data = {
                 y = 62,
                 width = 346,
                 height = 5
+            }, {  -- begin bad guy sprite
+                x = 358,
+                y = 146,
+                width = 40,
+                height = 38
+            }, {
+                x = 398,
+                y = 146,
+                width = 40,
+                height = 38
+            }, { 
+                x = 438,
+                y = 146,
+                width = 40,
+                height = 38
+            }, { 
+                x = 478,
+                y = 146,
+                width = 40,
+                height = 38
+            }, { 
+                x = 518,
+                y = 146,
+                width = 40,
+                height = 38
+            }, { 
+                x = 1,
+                y = 190,
+                width = 40,
+                height = 38
+            }, { 
+                x = 41,
+                y = 194,
+                width = 40,
+                height = 38
             }, {}
         },
         sheetContentWidth=560, 

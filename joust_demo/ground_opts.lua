@@ -9,7 +9,6 @@ local animation_data = {
     basePlatformRight = 15,
     basePlatformLeft = 16,
     basePlatformMid = 17,
-    
 }
 
 
