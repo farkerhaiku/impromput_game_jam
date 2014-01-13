@@ -90,37 +90,37 @@ local animation_data = {
                 x = 358,
                 y = 146,
                 width = 40,
-                height = 38
+                height = 34
             }, {
                 x = 398,
                 y = 146,
                 width = 40,
-                height = 38
+                height = 34
             }, { 
-                x = 438,
+                x = 439,
                 y = 146,
                 width = 40,
-                height = 38
+                height = 34
             }, { 
-                x = 478,
+                x = 479,
                 y = 146,
                 width = 40,
-                height = 38
+                height = 34
             }, { 
                 x = 518,
                 y = 146,
                 width = 40,
-                height = 38
+                height = 34
             }, { 
                 x = 1,
                 y = 190,
                 width = 40,
-                height = 38
+                height = 34
             }, { 
                 x = 41,
                 y = 194,
                 width = 40,
-                height = 38
+                height = 34
             }, {}
         },
         sheetContentWidth=560, 

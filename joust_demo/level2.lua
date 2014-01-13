@@ -74,9 +74,11 @@ local createBadGuy = function(mySheet)
     badGuy.collision = badGuyCollision
     badGuy:addEventListener("collision", badGuy)
     badGuy.arrayRef = #badGuyList + 1
-
+    
     badGuy.x = halfW
     badGuy.y = halfH
+    badGuy:setSequence("walk")
+    badGuy:play()
 end
 
 local floorCollision = function(self, event)
@@ -223,7 +225,7 @@ function scene:createScene( event )
     local group = self.view
 
     local background = display.newRect( 0, 0, screenW, screenH )
-    background:setFillColor( 188 )
+    background:setFillColor( 0 )
     local sheetData = { sheetContentWidth=560, sheetContentHeight=472 }
 
     mySheet = graphics.newImageSheet( "joust2.jpg", ostrich_opts.options )
